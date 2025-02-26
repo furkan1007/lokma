@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taze Lokma ve Şamişi</title>
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+  background-color: #F9F2E2;
+}
+
+        .bg-ten-rengi {
+            background-color: #C08457      ;
+        }
+
+        .btn-modern {
+            background-color: #3991c4;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            transition: all 0.3s ease-in-out;
+            font-size: 14px;
+            margin-right: 8px;
+        }
+
+        .btn-modern:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 10px rgba(0, 86, 179, 0.5);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 900px;
+            width: 80%;
+            text-align: center;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body class="text-black font-sans flex flex-col min-h-screen">
+
+    <!-- Navbar -->
+    <header class="bg-ten-rengi text-black shadow-md fixed w-full z-10 h-16">
+        <div class="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6 h-full font-medium">
+            <!-- Logo en solda -->
+            <div class="w-28 sm:w-32 md:w-40 lg:w-48">
+                <a href="#">
+                    <img src="img/LOGOO.png" alt="İzmirlinin Yeri Logo" class="w-full h-auto mt-4 sm:mt-6">
+                </a>
+            </div>
+
+            <!-- Mobile Navbar Toggle -->
+            <div class="lg:hidden flex items-center ml-auto">
+                <button id="menu-toggle" class="text-3xl focus:outline-none">☰</button>
+            </div>
+
+            <!-- Sayfalar ortada, responsive boşluksuz düzenleme -->
+            <nav
+                class="hidden lg:flex flex-wrap space-x-4 sm:space-x-6 md:space-x-8 text-base sm:text-lg justify-center flex-grow overflow-hidden">
+                <a href="#hakkimizda" class="text-white whitespace-nowrap">Hakkımızda</a>
+
+                <a href="#festival" class="text-white whitespace-nowrap">Festival Etkinlikleri</a>
+                <a href="#gallery" class="text-white whitespace-nowrap">Fotoğraf Galerisi</a>
+                <a href="#products" class="text-white whitespace-nowrap">Ürünlerimiz</a>
+                <a href="#contact" class="text-white whitespace-nowrap">İletişim</a>
+            </nav>
+
+            <!-- Yaklaşan Etkinlikler ve Özel Günler en sağda -->
+            <div class="relative hidden lg:block ml-auto">
+                <button id="dropdownButton"
+                    class="text-base sm:text-lg text-white font-medium focus:outline-none whitespace-nowrap">
+                    Özel Günler
+                </button>
+            </div>
+        </div>
+
+        <!-- Ortada açılacak büyük sayfa -->
+        <div id="dropdownMenu"
+            class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+            <div class="bg-white w-full sm:w-3/4 md:w-1/2 lg:w-1/3 h-[600px] p-8 rounded-lg relative">
+
+                <!-- Kapat Butonu -->
+                <button id="closeButton" class="absolute top-2 right-4 text-xl text-blue-500 hover:text-black-700">
+                    X
+                </button>
+                <div class="flex justify-between h-full">
+                    <!-- Sol bölüm: Yaklaşan Etkinlikler -->
+                    <div id="eventsContent" class="w-1/2 pr-4 overflow-y-auto">
+                        <h2 class="text-xl font-bold text-black mb-4 hover:text-blue-500 transition-all duration-300">
+                            Özel Günler</h2>
+                        <div class="event mb-4">
+                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
+                                İstanbul Çikolata Festivali</h3>
+                            <p>Tarih: 15 Mart</p>
+                            <p>Yer: İstanbul</p>
+                            <p>Tatlılar: Çikolatalı Kek, Çikolatalı Dondurma</p>
+                        </div>
+                        <div class="event mb-4">
+                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
+                                Ankara Pasta Festivali</h3>
+                            <p>Tarih: 5 Nisan</p>
+                            <p>Yer: Ankara</p>
+                            <p>Tatlılar: Çilekli Pasta, Kremalı Cupcake</p>
+                        </div>
+                        <div class="event mb-4">
+                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
+                                İzmir Dondurma Şenliği</h3>
+                            <p>Tarih: 20 Mayıs</p>
+                            <p>Yer: İzmir</p>
+                            <p>Tatlılar: Dondurma, Dondurmalı Waffle</p>
+                        </div>
+                    </div>
+
+                    <!-- Sağ bölüm: Özel Günler -->
+                    <div id="specialDaysContent" class="w-1/2 pl-4 overflow-y-auto mt-11">
+                        <div class="event mb-4">
+                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
+                                Yılbaşı</h3>
+                            <p>Tarih: 31 Aralık</p>
+                            <p>Yer: Türkiye genelinde kutlanır</p>
+                        </div>
+                        <div class="event mb-4">
+                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
+                                Sevgililer Günü</h3>
+                            <p>Tarih: 14 Şubat</p>
+                            <p>Yer: Dünya genelinde kutlanır</p>
+                        </div>
+                        <div class="event mb-4">
+                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
+                                Cumhuriyet Bayramı</h3>
+                            <p>Tarih: 29 Ekim</p>
+                            <p>Yer: Türkiye</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="fixed inset-0 bg-ten-rengi bg-opacity-95 hidden flex flex-col items-center justify-start z-50 pt-8 transition-all duration-300">
+        <button id="menu-close" class="absolute top-4 right-4 text-4xl text-black">&times;</button>
+        <nav class="flex flex-col space-y-8 text-3xl font-bold text-black w-full items-center mt-4">
+            <a href="#hakkimizda" class="hover:text-gray-600 whitespace-nowrap">Hakkımızda</a>
+            <a href="#festival" class="hover:text-gray-600 whitespace-nowrap">Festival Etkinlikleri</a>
+            <a href="#gallery" class="hover:text-gray-600 whitespace-nowrap">Fotoğraf Galerisi</a>
+            <a href="#products" class="hover:text-gray-600 whitespace-nowrap">Ürünlerimiz</a>
+            <a href="#contact" class="hover:text-gray-600 whitespace-nowrap">İletişim</a>
+        </nav>
+
+
+        <!-- Mobile Event Section -->
+        <div class="mt-8 w-full text-center">
+            <h3 class="font-semibold mb-2 mt-32">Yaklaşan Etkinlikler</h3>
+            <div class="event mb-4">
+                <p><strong>İstanbul Çikolata Festivali</strong></p>
+                <p>Tarih: 15 Mart</p>
+                <p>Yer: İstanbul</p>
+                <p>Tatlılar: Çikolatalı Kek, Çikolatalı Dondurma</p>
+            </div>
+            <div class="event mb-4">
+                <p><strong>Ankara Pasta Festivali</strong></p>
+                <p>Tarih: 5 Nisan</p>
+                <p>Yer: Ankara</p>
+                <p>Tatlılar: Çilekli Pasta, Kremalı Cupcake</p>
+            </div>
+            <div class="event mb-4">
+                <p><strong>İzmir Dondurma Şenliği</strong></p>
+                <p>Tarih: 20 Mayıs</p>
+                <p>Yer: İzmir</p>
+                <p>Tatlılar: Dondurma, Dondurmalı Waffle</p>
+            </div>
+        </div>
+
+        <!-- Instagram Icon & Social Media Text -->
+        <div class="mt-8 w-full text-center flex flex-col items-center">
+            <span class="mb-2">Sosyal Medya</span>
+            <a href="https://instagram.com" class="hover:text-gray-600 flex flex-col items-center">
+                <svg fill="#000000" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="m16 12v-.001c0-2.209-1.791-4-4-4s-4 1.791-4 4 1.791 4 4 4c1.104 0 2.104-.448 2.828-1.171.723-.701 1.172-1.682 1.172-2.768 0-.021 0-.042-.001-.063v.003zm2.16 0c-.012 3.379-2.754 6.114-6.135 6.114-3.388 0-6.135-2.747-6.135-6.135s2.747-6.135 6.135-6.135c1.694 0 3.228.687 4.338 1.797 1.109 1.08 1.798 2.587 1.798 4.256 0 .036 0 .073-.001.109v-.005zm1.687-6.406v.002c0 .795-.645 1.44-1.44 1.44s-1.44-.645-1.44-1.44.645-1.44 1.44-1.44c.398 0 .758.161 1.018.422.256.251.415.601.415.988v.029-.001zm-7.84-3.44-1.195-.008q-1.086-.008-1.649 0t-1.508.047c-.585.02-1.14.078-1.683.17l.073-.01c-.425.07-.802.17-1.163.303l.043-.014c-1.044.425-1.857 1.237-2.272 2.254l-.01.027c-.119.318-.219.695-.284 1.083l-.005.037c-.082.469-.14 1.024-.159 1.589l-.001.021q-.039.946-.047 1.508t0 1.649.008 1.195-.008 1.195 0 1.649.047 1.508c.02.585.078 1.14.17 1.683l-.01-.073c.07.425.17.802.303 1.163l-.014-.043c.425 1.044 1.237 1.857 2.254 2.272l.027.01c.318.119.695.219 1.083.284l.037.005c.469.082 1.024.14 1.588.159l.021.001q.946.039 1.508.047t1.649 0l1.188-.024 1.195.008q1.086.008 1.649 0t1.508-.047c.585-.02 1.14-.078 1.683-.17l-.073.01c.425-.07.802-.17 1.163-.303l-.043.014c1.044-.425 1.857-1.237 2.272-2.254l.01-.027c.119-.318.219-.695.284-1.083l.005-.037c.082-.469.14-1.024.159-1.588l.001-.021q.039-.946.047-1.508t0-1.649-.008-1.195.008-1.195 0-1.649-.047-1.508c-.02-.585-.078-1.14-.17-1.683l.01.073c-.07-.425-.17-.802-.303-1.163l.014.043c-.425-1.044-1.237-1.857-2.254-2.272l-.027-.01c-.318-.119-.695-.219-1.083-.284l-.037-.005c-.469-.082-1.024-.14-1.588-.159l-.021-.001q-.946-.039-1.508-.047t-1.649 0zm11.993 9.846q0 3.578-.08 4.953c.005.101.009.219.009.337 0 3.667-2.973 6.64-6.64 6.64-.119 0-.237-.003-.354-.009l.016.001q-1.375.08-4.953.08t-4.953-.08c-.101.005-.219.009-.337.009-3.667 0-6.64-2.973-6.64-6.64 0-.119.003-.237.009-.354l-.001.016q-.08-1.375-.08-4.953t.08-4.953c-.005-.101-.009-.219-.009-.337 0-3.667 2.973-6.64 6.64-6.64.119 0 .237.003.354.009l-.016-.001q1.375-.08 4.953-.08t4.953.08c.101-.005.219-.009.337-.009 3.667 0 6.64 2.973 6.64 6.64 0 .119-.003.237-.009.354l.001-.016q.08 1.374.08 4.953z" />
+                </svg>
+            </a>
+        </div>
+        </nav>
+    </div>
+
+    <!-- Ürünler Bölümü -->
+    <section id="products" class="py-20 flex-grow text-white text-center">
+        <div class="container mx-auto">
+            <h2 class="text-4xl text-yellow-600 font-bold">Ürünlerimiz</h2>
+            <div class="mt-10 flex flex-col sm:flex-row justify-center sm:space-x-16 space-y-8 sm:space-y-0">
+                <div class="bg-white shadow-lg p-8 rounded-xl text-black w-full sm:w-96">
+                    <img src="img/l.jpg" alt="Lokma" class="w-full h-64 object-cover rounded-lg">
+                    <h3 class="text-2xl mt-4 font-bold text-yellow-500">Lokma Çeşitleri</h3>
+                    <div class="mt-4 flex justify-center">
+                        <button class="btn-modern" onclick="openModal('lokmaModal')">Fiyat Bilgileri</button>
+                    </div>
+                </div>
+                <div class="bg-white shadow-lg p-8 rounded-xl text-black w-full sm:w-96">
+                    <img src="img/l.jpg" alt="Şamişi" class="w-full h-64 object-cover rounded-lg">
+                    <h3 class="text-2xl mt-4 font-bold text-yellow-500">Şamişi</h3>
+                    <div class="mt-4 flex justify-center">
+                        <button class="btn-modern" onclick="openModal('samisModal')">Fiyat Bilgileri</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal İçerikleri -->
+    <div id="lokmaModal" class="modal">
+        <div class="modal-content">
+            <h3 class="text-xl font-bold">Lokma Fiyatları</h3>
+            <div class="flex flex-col sm:flex-row">
+                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Küçük Lokma"
+                        class="w-full h-48 object-cover rounded-lg"></div>
+                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
+                    <p class="text-lg font-bold">Küçük Lokma - 200₺</p>
+                    <p>500 gram</p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row mt-4">
+                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Orta Boy Lokma"
+                        class="w-full h-48 object-cover rounded-lg"></div>
+                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
+                    <p class="text-lg font-bold">Orta Boy Lokma - 350₺</p>
+                    <p>1 kg</p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row mt-4">
+                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Büyük Boy Lokma"
+                        class="w-full h-48 object-cover rounded-lg"></div>
+                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
+                    <p class="text-lg font-bold">Büyük Lokma - 500₺</p>
+                    <p>1.5 kg</p>
+                </div>
+            </div>
+            <button class="btn-modern mt-4" onclick="closeModal('lokmaModal')">Kapat</button>
+        </div>
+    </div>
+
+    <!-- Şamişi Modal -->
+    <div id="samisModal" class="modal">
+        <div class="modal-content">
+            <h3 class="text-xl font-bold">Şamişi Fiyatları</h3>
+            <div class="flex flex-col sm:flex-row">
+                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Küçük Şamişi"
+                        class="w-full h-48 object-cover rounded-lg"></div>
+                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
+                    <p class="text-lg font-bold">Küçük Şamişi - 180₺</p>
+                    <p>500 gram</p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row mt-4">
+                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Orta Boy Şamişi"
+                        class="w-full h-48 object-cover rounded-lg"></div>
+                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
+                    <p class="text-lg font-bold">Orta Boy Şamişi - 320₺</p>
+                    <p>1 kg</p>
+                </div>
+            </div>
+            <div class="flex flex-col sm:flex-row mt-4">
+                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Büyük Boy Şamişi"
+                        class="w-full h-48 object-cover rounded-lg"></div>
+                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
+                    <p class="text-lg font-bold">Büyük Şamişi - 480₺</p>
+                    <p>1.5 kg</p>
+                </div>
+            </div>
+            <button class="btn-modern mt-4" onclick="closeModal('samisModal')">Kapat</button>
+        </div>
+    </div>
+
+  
+
+
+    <!-- Hakkımızda Bölümü -->
+    <section id="hakkimizda" class="w-full min-h-[130vh] bg-cover bg-center flex flex-col justify-center items-center"
+        style="background-image: url('https://source.unsplash.com/1920x1080/?lokma,dessert');">
+        <div class="bg-white bg-opacity-90 p-12 rounded-2xl shadow-xl max-w-6xl text-center space-y-10">
+            <h2 class="text-5xl font-extrabold text-yellow-600 mb-4">Hakkımızda</h2>
+            <p class="text-lg leading-relaxed text-gray-700">Lokma ve şamişi tatlılarının en taze ve en lezzetli haliyle
+                buluştuğu adresimize hoş geldiniz. Tatlılarımız, geleneksel tariflerin modern dokunuşlarla
+                harmanlanmasıyla hazırlanır. Her lokmada taptaze bir mutluluk ve özgün bir lezzet deneyimi sunuyoruz.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-2 text-yellow-500">Lokma Tatlısı</h3>
+                    <p class="text-gray-700">Altın renginde kızaran, çıtır dokusu ve şerbetin mükemmel dengesiyle her
+                        lokmada mutluluğu hissedin. Sıcak sıcak servis edilen lokmamız, tatlı krizlerine anında çözüm
+                        sunar.</p>
+                </div>
+                <div class="flex justify-center">
+                    <img src="img/l.jpg" alt="Lokma Tatlısı" class="rounded-xl shadow-lg w-60">
+                </div>
+                <div class="flex justify-center">
+                    <img src="img/l.jpg" alt="Şamişi Tatlısı" class="rounded-xl shadow-lg w-60">
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold mb-2 text-yellow-500">Şamişi Tatlısı</h3>
+                    <p class="text-gray-700">Kıbrıs’a özgü geleneksel bir lezzet olan şamişi, irmikten hazırlanan iç
+                        dolgusu ve kızartıldıktan sonra üzerine serpilen pudra şekeriyle öne çıkar. Hafif çıtır dış
+                        yüzeyi ve yumuşak iç dokusuyla her lokmada damaklarda unutulmaz bir tat bırakır.</p>
+                </div>
+            </div>
+            <blockquote class="italic text-xl text-gray-600 border-l-4 border-yellow-500 pl-4">“Her tatlı bir tebessüm,
+                her lokma bir anı demektir.”</blockquote>
+        </div>
+    </section>
+
+
+
+
+    <!-- Fotoğraf Galerisi -->
+    <section id="gallery" class="pt-24 pb-16 bg-cover bg-center min-h-screen"
+        style="background-image: url('https://source.unsplash.com/1920x1080/?dessert,background');">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="text-4xl font-extrabold text-yellow-600 mb-8">Izgara (Grid) Galeri</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <img src="img/l.jpg" class="rounded-xl shadow-lg">
+                <img src="img/l.jpg" class="rounded-xl shadow-lg">
+                <img src="img/l.jpg" class="rounded-xl shadow-lg">
+                <img src="img/l.jpg" class="rounded-xl shadow-lg">
+                <img src="img/l.jpg" class="rounded-xl shadow-lg">
+                <img src="img/l.jpg" class="rounded-xl shadow-lg">
+            </div>
+        </div>
+    </section>
+
+
+
+   
+    <!-- Footer -->
+    <footer id="contact" class="bg-ten-rengi text-black py-8 mt-16">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between text-center md:text-left">
+            <!-- Sosyal Medya -->
+            <div class="space-y-2 mb-4 md:mb-0 flex flex-col items-center md:items-start">
+                <!-- flex-col eklendi ve justify-center yerine items-center kullanıldı -->
+                <h3 class="font-bold text-lg text-white">Sosyal Medya</h3>
+                <a href="https://instagram.com" class="hover:text-gray-600">
+                    <svg class="mt-3" fill="#000000" width="20px" height="20px" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="m16 12v-.001c0-2.209-1.791-4-4-4s-4 1.791-4 4 1.791 4 4 4c1.104 0 2.104-.448 2.828-1.171.723-.701 1.172-1.682 1.172-2.768 0-.021 0-.042-.001-.063v.003zm2.16 0c-.012 3.379-2.754 6.114-6.135 6.114-3.388 0-6.135-2.747-6.135-6.135s2.747-6.135 6.135-6.135c1.694 0 3.228.687 4.338 1.797 1.109 1.08 1.798 2.587 1.798 4.256 0 .036 0 .073-.001.109v-.005zm1.687-6.406v.002c0 .795-.645 1.44-1.44 1.44s-1.44-.645-1.44-1.44.645-1.44 1.44-1.44c.398 0 .758.161 1.018.422.256.251.415.601.415.988v.029-.001zm-7.84-3.44-1.195-.008q-1.086-.008-1.649 0t-1.508.047c-.585.02-1.14.078-1.683.17l.073-.01c-.425.07-.802.17-1.163.303l.043-.014c-1.044.425-1.857 1.237-2.272 2.254l-.01.027c-.119.318-.219.695-.284 1.083l-.005.037c-.082.469-.14 1.024-.159 1.589l-.001.021q-.039.946-.047 1.508t0 1.649.008 1.195-.008 1.195 0 1.649.047 1.508c.02.585.078 1.14.17 1.683l-.01-.073c.07.425.17.802.303 1.163l-.014-.043c.425 1.044 1.237 1.857 2.254 2.272l.027.01c.318.119.695.219 1.083.284l.037.005c.469.082 1.024.14 1.588.159l.021.001q.946.039 1.508.047t1.649 0l1.188-.024 1.195.008q1.086.008 1.649 0t1.508-.047c.585-.02 1.14-.078 1.683-.17l-.073.01c.425-.07.802-.17 1.163-.303l-.043.014c1.044-.425 1.857-1.237 2.272-2.254l.01-.027c.119-.318.219-.695.284-1.083l.005-.037c.082-.469.14-1.024.159-1.588l.001-.021q.039-.946.047-1.508t0-1.649-.008-1.195.008-1.195 0-1.649-.047-1.508c-.02-.585-.078-1.14-.17-1.683l.01.073c-.07-.425-.17-.802-.303-1.163l.014.043c-.425-1.044-1.237-1.857-2.254-2.272l-.027-.01c-.318-.119-.695-.219-1.083-.284l-.037-.005c-.469-.082-1.024-.14-1.588-.159l-.021-.001q-.946-.039-1.508-.047t-1.649 0zm11.993 9.846q0 3.578-.08 4.953c.005.101.009.219.009.337 0 3.667-2.973 6.64-6.64 6.64-.119 0-.237-.003-.354-.009l.016.001q-1.375.08-4.953.08t-4.953-.08c-.101.005-.219.009-.337.009-3.667 0-6.64-2.973-6.64-6.64 0-.119.003-.237.009-.354l-.001.016q-.08-1.375-.08-4.953t.08-4.953c-.005-.101-.009-.219-.009-.337 0-3.667 2.973-6.64 6.64-6.64.119 0 .237.003.354.009l-.016-.001q1.375-.08 4.953-.08t4.953.08c.101-.005.219-.009.337-.009 3.667 0 6.64 2.973 6.64 6.64 0 .119-.003.237-.009.354l.001-.016q.08 1.374.08 4.953z" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- İletişim -->
+            <div class="space-y-2 mb-4 md:mb-0 text-white">
+                <h3 class="font-bold text-lg">İletişim</h3>
+                <p>Telefon: +90 123 456 789</p>
+                <p>Adres: Örnek Mahallesi, No:12, İstanbul</p>
+            </div>
+
+            <!-- Sayfalar -->
+            <div class="space-y-2 mb-4 md:mb-0">
+                <h3 class="font-bold text-lg text-white">Sayfalar</h3>
+                <div class="flex flex-col space-y-1">
+                    <a href="#hakkimizda" class="text-white whitespace-nowrap">Hakkımızda</a>
+                    <a href="#festival" class="text-white whitespace-nowrap">Festival Etkinlikleri</a>
+                    <a href="#gallery" class="text-white whitespace-nowrap">Fotoğraf Galerisi</a>
+                    <a href="#products" class="text-white whitespace-nowrap">Ürünlerimiz</a>
+                    <a href="#contact" class="text-white whitespace-nowrap">İletişim</a>
+                </div>
+            </div>
+
+            <!-- Çalışma Saatleri -->
+            <div class="space-y-2 text-white">
+                <h3 class="font-bold text-lg">Çalışma Saatleri</h3>
+                <p>Pazartesi - Cumartesi: 09:00 - 21:00</p>
+                <p>Pazar: 10:00 - 18:00</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Bilgi -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+    </script>
+
+    <!-- Marquee Animasyonu -->
+    <style>
+        /* Dropdown Menu */
+        .relative:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content {
+            display: none;
+        }
+
+        .event {
+            margin-bottom: 1rem;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(60%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+
+    <script>
+        // Sayfa yüklendikten sonra çalışacak şekilde script'i yerleştiriyoruz.
+        document.addEventListener('DOMContentLoaded', function () {
+            // Butona tıklama olayını dinle
+            document.getElementById('dropdownButton').addEventListener('click', function (event) {
+                var menu = document.getElementById('dropdownMenu');
+                // Menü görünürse gizle, görünmüyorsa aç
+                if (menu.style.display === 'none' || menu.style.display === '') {
+                    menu.style.display = 'flex';  // Menü aç
+                }
+            });
+
+            // Kapat butonuna tıklanırsa menüyü kapat
+            document.getElementById('closeButton').addEventListener('click', function () {
+                var menu = document.getElementById('dropdownMenu');
+                menu.style.display = 'none';  // Menü kapat
+            });
+
+            // Menü dışında bir yere tıklanırsa menüyü kapat
+            window.addEventListener('click', function (event) {
+                var menu = document.getElementById('dropdownMenu');
+                var button = document.getElementById('dropdownButton');
+                // Eğer menü dışında bir yere tıklanmışsa, menüyü kapat
+                if (!button.contains(event.target) && !menu.contains(event.target)) {
+                    menu.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Hamburger menüde bir sayfaya tıklandığında yönlendirmeyi sağlayan kodu ekledim.
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.getElementById("menu-toggle");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const menuClose = document.getElementById("menu-close");
+            const menuLinks = document.querySelectorAll("#mobile-menu a");
+
+            // Menü açma
+            menuToggle.addEventListener("click", function () {
+                mobileMenu.classList.remove("hidden");
+            });
+
+            // Menü kapama
+            menuClose.addEventListener("click", function () {
+                mobileMenu.classList.add("hidden");
+            });
+
+            // Sayfa bağlantısına tıklandığında menüyü kapatma ve sayfaya yönlendirme
+            menuLinks.forEach((link) => {
+                link.addEventListener("click", function () {
+                    mobileMenu.classList.add("hidden");
+                    const targetId = this.getAttribute("href");
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({ behavior: "smooth" });
+                    }
+                });
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
