@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taze Lokma ve Şamişi</title>
-    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap Icons Kütüphanesi -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
@@ -58,6 +60,7 @@
 </head>
 
 <body class="text-black font-sans flex flex-col min-h-screen">
+    
 
     <!-- Navbar -->
     <header class="bg-ten-rengi text-black shadow-md fixed w-full z-10 h-16">
@@ -209,96 +212,80 @@
         </nav>
     </div>
 
-    <!-- Ürünler Bölümü -->
-    <section id="products" class="py-20 flex-grow text-white text-center">
-        <div class="container mx-auto">
-            <h2 class="text-4xl text-yellow-600 font-bold">Ürünlerimiz</h2>
-            <div class="mt-10 flex flex-col sm:flex-row justify-center sm:space-x-16 space-y-8 sm:space-y-0">
-                <div class="bg-white shadow-lg p-8 rounded-xl text-black w-full sm:w-96">
-                    <img src="img/l.jpg" alt="Lokma" class="w-full h-64 object-cover rounded-lg">
-                    <h3 class="text-2xl mt-4 font-bold text-yellow-500">Lokma Çeşitleri</h3>
-                    <div class="mt-4 flex justify-center">
-                        <button class="btn-modern" onclick="openModal('lokmaModal')">Fiyat Bilgileri</button>
-                    </div>
-                </div>
-                <div class="bg-white shadow-lg p-8 rounded-xl text-black w-full sm:w-96">
-                    <img src="img/l.jpg" alt="Şamişi" class="w-full h-64 object-cover rounded-lg">
-                    <h3 class="text-2xl mt-4 font-bold text-yellow-500">Şamişi</h3>
-                    <div class="mt-4 flex justify-center">
-                        <button class="btn-modern" onclick="openModal('samisModal')">Fiyat Bilgileri</button>
-                    </div>
-                </div>
+
+
+<div class="flex items-center justify-center mt-32 relative">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-7xl mx-auto">
+        <!-- Lokma Kartı -->
+        <div class="relative group cursor-pointer w-full" onclick="toggleInfo('info1')">
+            <img src="img/lokma.jpg" class="w-full h-80 object-cover rounded-xl shadow-lg transition duration-300 group-hover:opacity-70" alt="Lokma">
+            <!-- Mobilde her zaman görünen, masaüstünde hover ile gelen yazı + ikon -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold md:opacity-0 md:group-hover:opacity-100 transition duration-300 rounded-xl">
+                <span class="mb-2">Menüyü görmek için tıkla</span>
+                <i class="bi bi-hand-index-thumb text-3xl"></i>
             </div>
         </div>
-    </section>
-
-    <!-- Modal İçerikleri -->
-    <div id="lokmaModal" class="modal">
-        <div class="modal-content">
-            <h3 class="text-xl font-bold">Lokma Fiyatları</h3>
-            <div class="flex flex-col sm:flex-row">
-                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Küçük Lokma"
-                        class="w-full h-48 object-cover rounded-lg"></div>
-                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
-                    <p class="text-lg font-bold">Küçük Lokma - 200₺</p>
-                    <p>500 gram</p>
-                </div>
+        
+        <!-- Şamişi Kartı -->
+        <div class="relative group cursor-pointer w-full" onclick="toggleInfo('info2')">
+            <img src="img/şamişi.jpg" class="w-full h-80 object-cover rounded-xl shadow-lg transition duration-300 group-hover:opacity-70" alt="Şamişi">
+            <!-- Mobilde her zaman görünen, masaüstünde hover ile gelen yazı + ikon -->
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold md:opacity-0 md:group-hover:opacity-100 transition duration-300 rounded-xl">
+                <span class="mb-2">Menüyü görmek için tıkla</span>
+                <i class="bi bi-hand-index-thumb text-3xl"></i>
             </div>
-            <div class="flex flex-col sm:flex-row mt-4">
-                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Orta Boy Lokma"
-                        class="w-full h-48 object-cover rounded-lg"></div>
-                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
-                    <p class="text-lg font-bold">Orta Boy Lokma - 350₺</p>
-                    <p>1 kg</p>
-                </div>
-            </div>
-            <div class="flex flex-col sm:flex-row mt-4">
-                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Büyük Boy Lokma"
-                        class="w-full h-48 object-cover rounded-lg"></div>
-                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
-                    <p class="text-lg font-bold">Büyük Lokma - 500₺</p>
-                    <p>1.5 kg</p>
-                </div>
-            </div>
-            <button class="btn-modern mt-4" onclick="closeModal('lokmaModal')">Kapat</button>
         </div>
     </div>
+</div>
 
-    <!-- Şamişi Modal -->
-    <div id="samisModal" class="modal">
-        <div class="modal-content">
-            <h3 class="text-xl font-bold">Şamişi Fiyatları</h3>
-            <div class="flex flex-col sm:flex-row">
-                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Küçük Şamişi"
-                        class="w-full h-48 object-cover rounded-lg"></div>
-                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
-                    <p class="text-lg font-bold">Küçük Şamişi - 180₺</p>
-                    <p>500 gram</p>
+    
+    
+    
+    <!-- Açılan Menü -->
+    <div id="info1" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] bg-white shadow-xl rounded-xl p-6 hidden z-50">
+        <button onclick="closeInfo()" class="absolute top-2 right-4 text-2xl">✖</button>
+        <div class="space-y-4">
+            <h3 class="text-xl font-bold text-center">Lokma Çeşitleri</h3>
+            <div class="flex items-center border-b pb-3">
+                <div class="w-1/2">
+                    <h3 class="text-md font-bold">Lokma Klasik</h3>
+                    <p class="text-sm">Şerbetli ve çıtır</p>
+                    <p class="text-md font-semibold">50 TL</p>
+                </div>
+                <div class="w-1/2 flex justify-center">
+                    <img src="https://img.icons8.com/ios/50/000000/doughnut.png" class="w-16 h-16">
                 </div>
             </div>
-            <div class="flex flex-col sm:flex-row mt-4">
-                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Orta Boy Şamişi"
-                        class="w-full h-48 object-cover rounded-lg"></div>
-                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
-                    <p class="text-lg font-bold">Orta Boy Şamişi - 320₺</p>
-                    <p>1 kg</p>
+            <div class="flex items-center border-b pb-3">
+                <div class="w-1/2">
+                    <h3 class="text-md font-bold">Lokma Çikolatalı</h3>
+                    <p class="text-sm">Bol çikolata soslu</p>
+                    <p class="text-md font-semibold">60 TL</p>
+                </div>
+                <div class="w-1/2 flex justify-center">
+                    <img src="https://img.icons8.com/ios/50/000000/chocolate-bar.png" class="w-16 h-16">
                 </div>
             </div>
-            <div class="flex flex-col sm:flex-row mt-4">
-                <div class="w-full sm:w-1/3"><img src="img/l.jpg" alt="Büyük Boy Şamişi"
-                        class="w-full h-48 object-cover rounded-lg"></div>
-                <div class="w-full sm:w-2/3 flex flex-col justify-center text-left pl-4 mt-4 sm:mt-0">
-                    <p class="text-lg font-bold">Büyük Şamişi - 480₺</p>
-                    <p>1.5 kg</p>
-                </div>
-            </div>
-            <button class="btn-modern mt-4" onclick="closeModal('samisModal')">Kapat</button>
         </div>
     </div>
-
-  
-
-
+    
+    <div id="info2" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] bg-white shadow-xl rounded-xl p-6 hidden z-50">
+        <button onclick="closeInfo()" class="absolute top-2 right-4 text-2xl">✖</button>
+        <div class="space-y-4">
+            <h3 class="text-xl font-bold text-center">Şamişi Çeşitleri</h3>
+            <div class="flex items-center border-b pb-3">
+                <div class="w-1/2">
+                    <h3 class="text-md font-bold">Şamişi Peynirli</h3>
+                    <p class="text-sm">Bol peynir dolgulu</p>
+                    <p class="text-md font-semibold">55 TL</p>
+                </div>
+                <div class="w-1/2 flex justify-center">
+                    <img src="https://img.icons8.com/ios/50/000000/cheese.png" class="w-16 h-16">
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- Hakkımızda Bölümü -->
     <section id="hakkimizda" class="w-full min-h-[130vh] bg-cover bg-center flex flex-col justify-center items-center"
         style="background-image: url('https://source.unsplash.com/1920x1080/?lokma,dessert');">
@@ -352,10 +339,7 @@
             </div>
         </div>
     </section>
-
-
-
-   
+ 
     <!-- Footer -->
     <footer id="contact" class="bg-ten-rengi text-black py-8 mt-16">
         <div class="container mx-auto flex flex-col md:flex-row justify-between text-center md:text-left">
@@ -500,6 +484,44 @@
         });
 
     </script>
+
+
+
+
+<script>
+    function toggleInfo(id) {
+        document.getElementById("info1").classList.add("hidden");
+        document.getElementById("info2").classList.add("hidden");
+    
+        let infoBox = document.getElementById(id);
+        if (infoBox.classList.contains("hidden")) {
+            infoBox.classList.remove("hidden");
+        } else {
+            infoBox.classList.add("hidden");
+        }
+    }
+    
+    function closeInfo() {
+        document.getElementById("info1").classList.add("hidden");
+        document.getElementById("info2").classList.add("hidden");
+    }
+    
+    // Dışarıya tıklayınca menüyü kapatma
+    document.addEventListener("click", function(event) {
+        let info1 = document.getElementById("info1");
+        let info2 = document.getElementById("info2");
+        
+        if (!info1.contains(event.target) && !info2.contains(event.target) && !event.target.closest(".group")) {
+            closeInfo();
+        }
+    });
+    
+    // Sayfa aşağı kaydırılınca menüyü kapatma
+    window.addEventListener("scroll", function() {
+        closeInfo();
+    });
+    </script>
+    
 
 </body>
 
