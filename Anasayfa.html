@@ -12,6 +12,16 @@
         body {
   background-color: #F9F2E2;
 }
+#hakkimizda {
+    height: auto;
+    min-height: 100vh; /* Ekran küçükse en az 100vh olacak */
+    padding-top: 10px; /* Üst boşluğu yönet */
+}
+#gallery{
+    height: auto;
+    min-height: 20vh; /* Ekran küçükse en az 100vh olacak */
+    padding-top: 10px; /* Üst boşluğu yönet */
+}
 
         .bg-ten-rengi {
             background-color: #C08457      ;
@@ -248,7 +258,7 @@
             <h3 class="text-xl font-bold text-center">Lokma Çeşitleri</h3>
             <div class="flex items-center border-b pb-3">
                 <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Klasik</h3>
+                    <h3 class="text-md font-bold">Lokma Büyük Boy</h3>
                     <p class="text-sm">Şerbetli ve çıtır</p>
                     <p class="text-md font-semibold">50 TL</p>
                 </div>
@@ -258,11 +268,22 @@
             </div>
             <div class="flex items-center border-b pb-3">
                 <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Çikolatalı</h3>
+                    <h3 class="text-md font-bold">Lokma Orta Boy</h3>
                     <p class="text-sm">Bol çikolata soslu</p>
                     <p class="text-md font-semibold">60 TL</p>
                 </div>
                 <div class="w-1/2 flex justify-center">
+                    <img src="https://img.icons8.com/ios/50/000000/doughnut.png" class="w-16 h-16">
+                </div>
+            </div>
+            <div class="flex items-center border-b pb-3">
+                <div class="w-1/2">
+                    <h3 class="text-md font-bold">Lokma Orta Boy</h3>
+                    <p class="text-sm">Bol çikolata soslu</p>
+                    <p class="text-md font-semibold">60 TL</p>
+                </div>
+                <div class="w-1/2 flex justify-center">
+
                     <img src="https://img.icons8.com/ios/50/000000/chocolate-bar.png" class="w-16 h-16">
                 </div>
             </div>
@@ -280,6 +301,26 @@
                     <p class="text-md font-semibold">55 TL</p>
                 </div>
                 <div class="w-1/2 flex justify-center">
+                    <img src="https://img.icons8.com/ios/50/000000/doughnut.png" class="w-16 h-16">
+                </div>
+            </div>
+            <div class="flex items-center border-b pb-3">
+                <div class="w-1/2">
+                    <h3 class="text-md font-bold">Lokma Orta Boy</h3>
+                    <p class="text-sm">Bol çikolata soslu</p>
+                    <p class="text-md font-semibold">60 TL</p>
+                </div>
+                <div class="w-1/2 flex justify-center">
+                    <img src="https://img.icons8.com/ios/50/000000/doughnut.png" class="w-16 h-16">
+                </div>
+            </div>
+            <div class="flex items-center border-b pb-3">
+                <div class="w-1/2">
+                    <h3 class="text-md font-bold">Lokma Orta Boy</h3>
+                    <p class="text-sm">Bol çikolata soslu</p>
+                    <p class="text-md font-semibold">60 TL</p>
+                </div>
+                <div class="w-1/2 flex justify-center">
                     <img src="https://img.icons8.com/ios/50/000000/cheese.png" class="w-16 h-16">
                 </div>
             </div>
@@ -287,7 +328,9 @@
     </div>
     
     <!-- Hakkımızda Bölümü -->
-    <section id="hakkimizda" class="w-full min-h-[130vh] bg-cover bg-center flex flex-col justify-center items-center"
+   <section id="hakkimizda" 
+    class="w-full min-h-[130vh] bg-cover bg-center flex flex-col justify-center items-center 
+           "
         style="background-image: url('https://source.unsplash.com/1920x1080/?lokma,dessert');">
         <div class="bg-white bg-opacity-90 p-12 rounded-2xl shadow-xl max-w-6xl text-center space-y-10">
             <h2 class="text-5xl font-extrabold text-yellow-600 mb-4">Hakkımızda</h2>
@@ -333,32 +376,31 @@
                 <img src="img/l.jpg" class="rounded-xl shadow-lg">
                 <img src="img/l.jpg" class="rounded-xl shadow-lg">
                 <img src="img/l.jpg" class="rounded-xl shadow-lg">
-                <img src="img/l.jpg" class="rounded-xl shadow-lg">
-                <img src="img/l.jpg" class="rounded-xl shadow-lg">
-                <img src="img/l.jpg" class="rounded-xl shadow-lg">
+            
             </div>
         </div>
     </section>
  
     <!-- Footer -->
     <footer id="contact" class="bg-ten-rengi text-black py-8 mt-16">
-        <div class="container mx-auto flex flex-col md:flex-row justify-between text-center md:text-left">
-            <!-- Sosyal Medya -->
-            <div class="space-y-2 mb-4 md:mb-0 flex flex-col items-center md:items-start">
-                <!-- flex-col eklendi ve justify-center yerine items-center kullanıldı -->
-                <h3 class="font-bold text-lg text-white">Sosyal Medya</h3>
-                <a href="https://instagram.com" class="hover:text-gray-600">
-                    <svg class="mt-3" fill="#000000" width="20px" height="20px" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="m16 12v-.001c0-2.209-1.791-4-4-4s-4 1.791-4 4 1.791 4 4 4c1.104 0 2.104-.448 2.828-1.171.723-.701 1.172-1.682 1.172-2.768 0-.021 0-.042-.001-.063v.003zm2.16 0c-.012 3.379-2.754 6.114-6.135 6.114-3.388 0-6.135-2.747-6.135-6.135s2.747-6.135 6.135-6.135c1.694 0 3.228.687 4.338 1.797 1.109 1.08 1.798 2.587 1.798 4.256 0 .036 0 .073-.001.109v-.005zm1.687-6.406v.002c0 .795-.645 1.44-1.44 1.44s-1.44-.645-1.44-1.44.645-1.44 1.44-1.44c.398 0 .758.161 1.018.422.256.251.415.601.415.988v.029-.001zm-7.84-3.44-1.195-.008q-1.086-.008-1.649 0t-1.508.047c-.585.02-1.14.078-1.683.17l.073-.01c-.425.07-.802.17-1.163.303l.043-.014c-1.044.425-1.857 1.237-2.272 2.254l-.01.027c-.119.318-.219.695-.284 1.083l-.005.037c-.082.469-.14 1.024-.159 1.589l-.001.021q-.039.946-.047 1.508t0 1.649.008 1.195-.008 1.195 0 1.649.047 1.508c.02.585.078 1.14.17 1.683l-.01-.073c.07.425.17.802.303 1.163l-.014-.043c.425 1.044 1.237 1.857 2.254 2.272l.027.01c.318.119.695.219 1.083.284l.037.005c.469.082 1.024.14 1.588.159l.021.001q.946.039 1.508.047t1.649 0l1.188-.024 1.195.008q1.086.008 1.649 0t1.508-.047c.585-.02 1.14-.078 1.683-.17l-.073.01c.425-.07.802-.17 1.163-.303l-.043.014c1.044-.425 1.857-1.237 2.272-2.254l.01-.027c.119-.318.219-.695.284-1.083l.005-.037c.082-.469.14-1.024.159-1.588l.001-.021q.039-.946.047-1.508t0-1.649-.008-1.195.008-1.195 0-1.649-.047-1.508c-.02-.585-.078-1.14-.17-1.683l.01.073c-.07-.425-.17-.802-.303-1.163l.014.043c-.425-1.044-1.237-1.857-2.254-2.272l-.027-.01c-.318-.119-.695-.219-1.083-.284l-.037-.005c-.469-.082-1.024-.14-1.588-.159l-.021-.001q-.946-.039-1.508-.047t-1.649 0zm11.993 9.846q0 3.578-.08 4.953c.005.101.009.219.009.337 0 3.667-2.973 6.64-6.64 6.64-.119 0-.237-.003-.354-.009l.016.001q-1.375.08-4.953.08t-4.953-.08c-.101.005-.219.009-.337.009-3.667 0-6.64-2.973-6.64-6.64 0-.119.003-.237.009-.354l-.001.016q-.08-1.375-.08-4.953t.08-4.953c-.005-.101-.009-.219-.009-.337 0-3.667 2.973-6.64 6.64-6.64.119 0 .237.003.354.009l-.016-.001q1.375-.08 4.953-.08t4.953.08c.101-.005.219-.009.337-.009 3.667 0 6.64 2.973 6.64 6.64 0 .119-.003.237-.009.354l.001-.016q.08 1.374.08 4.953z" />
-                    </svg>
-                </a>
-            </div>
+        <div class="container mx-auto flex flex-col md:flex-row justify-between text-center md:text-left    ">
 
             <!-- İletişim -->
             <div class="space-y-2 mb-4 md:mb-0 text-white">
-                <h3 class="font-bold text-lg">İletişim</h3>
+                <h3 class="font-bold text-lg ">İletişim</h3>
+                <a href="https://instagram.com" class="hover:text-gray-600 text-white md:items-center flex justify-center"   class="md:items-center md:flex md:justify-center" style="fill:#FFFFFF;"></a>
+                <div class="flex justify-center md:justify-start">
+                    <a href="https://instagram.com" class="hover:text-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0,0,256,256"
+                            style="fill:#FFFFFF;">
+                            <g transform="scale(5.12,5.12)">
+                                <path d="M16,3c-7.16752,0 -13,5.83248 -13,13v18c0,7.16752 5.83248,13 13,13h18c7.16752,0 13,-5.83248 13,-13v-18c0,-7.16752 -5.83248,-13 -13,-13zM16,5h18c6.08648,0 11,4.91352 11,11v18c0,6.08648 -4.91352,11 -11,11h-18c-6.08648,0 -11,-4.91352 -11,-11v-18c0,-6.08648 4.91352,-11 11,-11zM37,11c-1.10457,0 -2,0.89543 -2,2c0,1.10457 0.89543,2 2,2c1.10457,0 2,-0.89543 2,-2c0,-1.10457 -0.89543,-2 -2,-2zM25,14c-6.06329,0 -11,4.93671 -11,11c0,6.06329 4.93671,11 11,11c6.06329,0 11,-4.93671 11,-11c0,-6.06329 -4.93671,-11 -11,-11zM25,16c4.98241,0 9,4.01759 9,9c0,4.98241 -4.01759,9 -9,9c-4.98241,0 -9,-4.01759 -9,-9c0,-4.98241 4.01759,-9 9,-9z"></path>
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+                
+                </a>
                 <p>Telefon: +90 123 456 789</p>
                 <p>Adres: Örnek Mahallesi, No:12, İstanbul</p>
             </div>
