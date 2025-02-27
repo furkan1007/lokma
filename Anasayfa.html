@@ -6,25 +6,31 @@
     <title>Taze Lokma ve Şamişi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Bootstrap Icons Kütüphanesi -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.1.2/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-  background-color: #F9F2E2;
-}
-#hakkimizda {
-    height: auto;
-    min-height: 100vh; /* Ekran küçükse en az 100vh olacak */
-    padding-top: 10px; /* Üst boşluğu yönet */
-}
-#gallery{
-    height: auto;
-    min-height: 20vh; /* Ekran küçükse en az 100vh olacak */
-    padding-top: 10px; /* Üst boşluğu yönet */
-}
+            background-color: #F9F2E2;
+        }
+
+        #hakkimizda {
+            height: auto;
+            min-height: 70vh;
+            /* Ekran küçükse en az 100vh olacak */
+            padding-top: 70px;
+            /* Üst boşluğu yönet */
+        }
+
+        #gallery {
+            height: auto;
+            min-height: 20vh;
+            /* Ekran küçükse en az 100vh olacak */
+            padding-top: 10px;
+            /* Üst boşluğu yönet */
+        }
 
         .bg-ten-rengi {
-            background-color: #C08457      ;
+            background-color: #C08457;
         }
 
         .btn-modern {
@@ -70,268 +76,194 @@
 </head>
 
 <body class="text-black font-sans flex flex-col min-h-screen">
-    
 
     <!-- Navbar -->
     <header class="bg-ten-rengi text-black shadow-md fixed w-full z-10 h-16">
         <div class="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6 h-full font-medium">
-            <!-- Logo en solda -->
-            <div class="w-28 sm:w-32 md:w-40 lg:w-48">
-                <a href="#">
-                    <img src="img/LOGOO.png" alt="İzmirlinin Yeri Logo" class="w-full h-auto mt-4 sm:mt-6">
-                </a>
-            </div>
 
             <!-- Mobile Navbar Toggle -->
-            <div class="lg:hidden flex items-center ml-auto">
-                <button id="menu-toggle" class="text-3xl focus:outline-none">☰</button>
-            </div>
-
-            <!-- Sayfalar ortada, responsive boşluksuz düzenleme -->
-            <nav
-                class="hidden lg:flex flex-wrap space-x-4 sm:space-x-6 md:space-x-8 text-base sm:text-lg justify-center flex-grow overflow-hidden">
-                <a href="#hakkimizda" class="text-white whitespace-nowrap">Hakkımızda</a>
-
-                <a href="#festival" class="text-white whitespace-nowrap">Festival Etkinlikleri</a>
-                <a href="#gallery" class="text-white whitespace-nowrap">Fotoğraf Galerisi</a>
-                <a href="#products" class="text-white whitespace-nowrap">Ürünlerimiz</a>
-                <a href="#contact" class="text-white whitespace-nowrap">İletişim</a>
-            </nav>
-
-            <!-- Yaklaşan Etkinlikler ve Özel Günler en sağda -->
-            <div class="relative hidden lg:block ml-auto">
-                <button id="dropdownButton"
-                    class="text-base sm:text-lg text-white font-medium focus:outline-none whitespace-nowrap">
-                    Özel Günler
+            <div class="lg:hidden flex items-center mr-4">
+                <button id="menu-toggle" class="text-3xl focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="39" height="30" viewBox="0,0,256,256"
+                        style="fill:#FFFFFF;">
+                        <g fill="#ffffff" fill-rule="nonzero">
+                            <g transform="scale(5.12,5.12)">
+                                <path d="M0,7.5v5h50v-5zM0,22.5v5h50v-5zM0,37.5v5h50v-5z"></path>
+                            </g>
+                        </g>
+                    </svg>
                 </button>
             </div>
+
+            <!-- Sayfalar ve Başlık Ortada -->
+            <nav
+                class="hidden lg:flex flex-wrap space-x-4 sm:space-x-6 md:space-x-8 text-base sm:text-lg justify-center flex-grow overflow-hidden items-center">
+
+                <!-- Başlık -->
+                <a href="#"
+                    class="text-white font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl tracking-wide leading-none font-[Poppins] mr-6 lg:mr-0">
+                    İzmirlinin <span class="font-extrabold">Yeri</span>
+                </a>
+
+                <a href="#hakkimizda" class="text-white whitespace-nowrap">Hakkımızda</a>
+                <a href="#products" class="text-white whitespace-nowrap">Ürünlerimiz</a>
+                <a href="#contact-page" class="text-white whitespace-nowrap">İletişim</a>
+            </nav>
+
+            <!-- Mobilde başlık ortada olacak -->
+            <a href="#"
+                class="lg:hidden absolute left-1/2 transform -translate-x-1/2 text-white font-bold text-xl sm:text-2xl tracking-wide font-[Poppins]">
+                İzmirlinin <span class="font-extrabold">Yeri</span>
+            </a>
         </div>
 
         <!-- Ortada açılacak büyük sayfa -->
         <div id="dropdownMenu"
             class="hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
             <div class="bg-white w-full sm:w-3/4 md:w-1/2 lg:w-1/3 h-[600px] p-8 rounded-lg relative">
-
                 <!-- Kapat Butonu -->
                 <button id="closeButton" class="absolute top-2 right-4 text-xl text-blue-500 hover:text-black-700">
                     X
                 </button>
-                <div class="flex justify-between h-full">
-                    <!-- Sol bölüm: Yaklaşan Etkinlikler -->
-                    <div id="eventsContent" class="w-1/2 pr-4 overflow-y-auto">
-                        <h2 class="text-xl font-bold text-black mb-4 hover:text-blue-500 transition-all duration-300">
-                            Özel Günler</h2>
-                        <div class="event mb-4">
-                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
-                                İstanbul Çikolata Festivali</h3>
-                            <p>Tarih: 15 Mart</p>
-                            <p>Yer: İstanbul</p>
-                            <p>Tatlılar: Çikolatalı Kek, Çikolatalı Dondurma</p>
-                        </div>
-                        <div class="event mb-4">
-                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
-                                Ankara Pasta Festivali</h3>
-                            <p>Tarih: 5 Nisan</p>
-                            <p>Yer: Ankara</p>
-                            <p>Tatlılar: Çilekli Pasta, Kremalı Cupcake</p>
-                        </div>
-                        <div class="event mb-4">
-                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
-                                İzmir Dondurma Şenliği</h3>
-                            <p>Tarih: 20 Mayıs</p>
-                            <p>Yer: İzmir</p>
-                            <p>Tatlılar: Dondurma, Dondurmalı Waffle</p>
-                        </div>
-                    </div>
-
-                    <!-- Sağ bölüm: Özel Günler -->
-                    <div id="specialDaysContent" class="w-1/2 pl-4 overflow-y-auto mt-11">
-                        <div class="event mb-4">
-                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
-                                Yılbaşı</h3>
-                            <p>Tarih: 31 Aralık</p>
-                            <p>Yer: Türkiye genelinde kutlanır</p>
-                        </div>
-                        <div class="event mb-4">
-                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
-                                Sevgililer Günü</h3>
-                            <p>Tarih: 14 Şubat</p>
-                            <p>Yer: Dünya genelinde kutlanır</p>
-                        </div>
-                        <div class="event mb-4">
-                            <h3 class="font-bold text-lg text-black hover:text-blue-500 transition-all duration-300">
-                                Cumhuriyet Bayramı</h3>
-                            <p>Tarih: 29 Ekim</p>
-                            <p>Yer: Türkiye</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="flex justify-between h-full"></div>
             </div>
         </div>
-        </div>
-
-
     </header>
+
+
 
     <!-- Mobile Menu -->
     <div id="mobile-menu"
-        class="fixed inset-0 bg-ten-rengi bg-opacity-95 hidden flex flex-col items-center justify-start z-50 pt-8 transition-all duration-300">
-        <button id="menu-close" class="absolute top-4 right-4 text-4xl text-black">&times;</button>
-        <nav class="flex flex-col space-y-8 text-3xl font-bold text-black w-full items-center mt-4">
-            <a href="#hakkimizda" class="hover:text-gray-600 whitespace-nowrap">Hakkımızda</a>
-            <a href="#festival" class="hover:text-gray-600 whitespace-nowrap">Festival Etkinlikleri</a>
-            <a href="#gallery" class="hover:text-gray-600 whitespace-nowrap">Fotoğraf Galerisi</a>
-            <a href="#products" class="hover:text-gray-600 whitespace-nowrap">Ürünlerimiz</a>
-            <a href="#contact" class="hover:text-gray-600 whitespace-nowrap">İletişim</a>
+        class="fixed top-40 left-1/2 transform -translate-x-1/2 bg-ten-rengi bg-opacity-95 hidden flex flex-col items-center z-50 py-10 px-12 w-4/5 max-w-lg h-[45vh] rounded-2xl shadow-2xl transition-all duration-300">
+        <button id="menu-close" class="absolute top-4 right-6 text-3xl text-white">
+            &times;
+        </button>
+
+        <nav class="flex flex-col space-y-6 text-xl font-bold text-black w-full items-center mt-10">
+            <a href="#hakkimizda" class="hover:text-gray-600 whitespace-nowrap text-white">Hakkımızda</a>
+            <a href="#products" class="hover:text-gray-600 whitespace-nowrap text-white">Ürünlerimiz</a>
+            <a href="#contact-page" class="hover:text-gray-600 whitespace-nowrap text-white">İletişim</a>
         </nav>
 
-
-        <!-- Mobile Event Section -->
-        <div class="mt-8 w-full text-center">
-            <h3 class="font-semibold mb-2 mt-32">Yaklaşan Etkinlikler</h3>
-            <div class="event mb-4">
-                <p><strong>İstanbul Çikolata Festivali</strong></p>
-                <p>Tarih: 15 Mart</p>
-                <p>Yer: İstanbul</p>
-                <p>Tatlılar: Çikolatalı Kek, Çikolatalı Dondurma</p>
-            </div>
-            <div class="event mb-4">
-                <p><strong>Ankara Pasta Festivali</strong></p>
-                <p>Tarih: 5 Nisan</p>
-                <p>Yer: Ankara</p>
-                <p>Tatlılar: Çilekli Pasta, Kremalı Cupcake</p>
-            </div>
-            <div class="event mb-4">
-                <p><strong>İzmir Dondurma Şenliği</strong></p>
-                <p>Tarih: 20 Mayıs</p>
-                <p>Yer: İzmir</p>
-                <p>Tatlılar: Dondurma, Dondurmalı Waffle</p>
-            </div>
-        </div>
-
-        <!-- Instagram Icon & Social Media Text -->
-        <div class="mt-8 w-full text-center flex flex-col items-center">
-            <span class="mb-2">Sosyal Medya</span>
-            <a href="https://instagram.com" class="hover:text-gray-600 flex flex-col items-center">
-                <svg fill="#000000" width="30px" height="30px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="m16 12v-.001c0-2.209-1.791-4-4-4s-4 1.791-4 4 1.791 4 4 4c1.104 0 2.104-.448 2.828-1.171.723-.701 1.172-1.682 1.172-2.768 0-.021 0-.042-.001-.063v.003zm2.16 0c-.012 3.379-2.754 6.114-6.135 6.114-3.388 0-6.135-2.747-6.135-6.135s2.747-6.135 6.135-6.135c1.694 0 3.228.687 4.338 1.797 1.109 1.08 1.798 2.587 1.798 4.256 0 .036 0 .073-.001.109v-.005zm1.687-6.406v.002c0 .795-.645 1.44-1.44 1.44s-1.44-.645-1.44-1.44.645-1.44 1.44-1.44c.398 0 .758.161 1.018.422.256.251.415.601.415.988v.029-.001zm-7.84-3.44-1.195-.008q-1.086-.008-1.649 0t-1.508.047c-.585.02-1.14.078-1.683.17l.073-.01c-.425.07-.802.17-1.163.303l.043-.014c-1.044.425-1.857 1.237-2.272 2.254l-.01.027c-.119.318-.219.695-.284 1.083l-.005.037c-.082.469-.14 1.024-.159 1.589l-.001.021q-.039.946-.047 1.508t0 1.649.008 1.195-.008 1.195 0 1.649.047 1.508c.02.585.078 1.14.17 1.683l-.01-.073c.07.425.17.802.303 1.163l-.014-.043c.425 1.044 1.237 1.857 2.254 2.272l.027.01c.318.119.695.219 1.083.284l.037.005c.469.082 1.024.14 1.588.159l.021.001q.946.039 1.508.047t1.649 0l1.188-.024 1.195.008q1.086.008 1.649 0t1.508-.047c.585-.02 1.14-.078 1.683-.17l-.073.01c.425-.07.802-.17 1.163-.303l-.043.014c1.044-.425 1.857-1.237 2.272-2.254l.01-.027c.119-.318.219-.695.284-1.083l.005-.037c.082-.469.14-1.024.159-1.588l.001-.021q.039-.946.047-1.508t0-1.649-.008-1.195.008-1.195 0-1.649-.047-1.508c-.02-.585-.078-1.14-.17-1.683l.01.073c-.07-.425-.17-.802-.303-1.163l.014.043c-.425-1.044-1.237-1.857-2.254-2.272l-.027-.01c-.318-.119-.695-.219-1.083-.284l-.037-.005c-.469-.082-1.024-.14-1.588-.159l-.021-.001q-.946-.039-1.508-.047t-1.649 0zm11.993 9.846q0 3.578-.08 4.953c.005.101.009.219.009.337 0 3.667-2.973 6.64-6.64 6.64-.119 0-.237-.003-.354-.009l.016.001q-1.375.08-4.953.08t-4.953-.08c-.101.005-.219.009-.337.009-3.667 0-6.64-2.973-6.64-6.64 0-.119.003-.237.009-.354l-.001.016q-.08-1.375-.08-4.953t.08-4.953c-.005-.101-.009-.219-.009-.337 0-3.667 2.973-6.64 6.64-6.64.119 0 .237.003.354.009l-.016-.001q1.375-.08 4.953-.08t4.953.08c.101-.005.219-.009.337-.009 3.667 0 6.64 2.973 6.64 6.64 0 .119-.003.237-.009.354l.001-.016q.08 1.374.08 4.953z" />
+        <!-- Sosyal Medya Başlık ve İkon -->
+        <div class="flex flex-col items-center mt-14">
+            <p class="text-white text-lg font-semibold mb-2">Sosyal Medya</p>
+            <a href="https://instagram.com" class="hover:text-gray-600">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0,0,256,256"
+                    style="fill:#FFFFFF;">
+                    <g transform="scale(5.12,5.12)">
+                        <path
+                            d="M16,3c-7.16752,0 -13,5.83248 -13,13v18c0,7.16752 5.83248,13 13,13h18c7.16752,0 13,-5.83248 13,-13v-18c0,-7.16752 -5.83248,-13 -13,-13zM16,5h18c6.08648,0 11,4.91352 11,11v18c0,6.08648 -4.91352,11 -11,11h-18c-6.08648,0 -11,-4.91352 -11,-11v-18c0,-6.08648 4.91352,-11 11,-11zM37,11c-1.10457,0 -2,0.89543 -2,2c0,1.10457 0.89543,2 2,2c1.10457,0 2,-0.89543 2,-2c0,-1.10457 -0.89543,-2 -2,-2zM25,14c-6.06329,0 -11,4.93671 -11,11c0,6.06329 4.93671,11 11,11c6.06329,0 11,-4.93671 11,-11c0,-6.06329 -4.93671,-11 -11,-11zM25,16c4.98241,0 9,4.01759 9,9c0,4.98241 -4.01759,9 -9,9c-4.98241,0 -9,-4.01759 -9,-9c0,-4.98241 4.01759,-9 9,-9z">
+                        </path>
+                    </g>
                 </svg>
             </a>
         </div>
-        </nav>
+    </div>
+
+    <div id="products" class="flex flex-col items-center justify-center mt-32 relative">
+        <!-- Başlık -->
+        <h2 class="text-4xl font-extrabold text-yellow-600 text-center mb-12">Ürünlerimiz</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-7xl mx-auto">
+            <!-- Lokma Kartı -->
+            <div class="relative group cursor-pointer w-full" onclick="toggleInfo('info1')">
+                <img src="img//444.webp"
+                    class="w-full h-80 object-cover rounded-xl shadow-lg transition duration-300 group-hover:opacity-70"
+                    alt="Lokma">
+                <!-- Mobilde her zaman görünen, masaüstünde hover ile gelen yazı + ikon -->
+                <div
+                    class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold md:opacity-0 md:group-hover:opacity-100 transition duration-300 rounded-xl">
+                    <span class="mb-2">Menüyü görmek için tıkla</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+                        <path
+                            d="M12 8c.26 0 .52.1.71.29l5 5a1 1 0 1 1-1.42 1.42L12 10.42l-4.29 4.29a1 1 0 1 1-1.42-1.42l5-5c.19-.19.45-.29.71-.29z" />
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Şamişi Kartı -->
+            <div class="relative group cursor-pointer w-full" onclick="toggleInfo('info2')">
+                <img src="img/samisi.jpg"
+                    class="w-full h-80 object-cover rounded-xl shadow-lg transition duration-300 group-hover:opacity-70"
+                    alt="Şamişi">
+                <!-- Mobilde her zaman görünen, masaüstünde hover ile gelen yazı + ikon -->
+                <div
+                    class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold md:opacity-0 md:group-hover:opacity-100 transition duration-300 rounded-xl">
+                    <span class="mb-2">Menüyü görmek için tıkla</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+                        <path
+                            d="M12 8c.26 0 .52.1.71.29l5 5a1 1 0 1 1-1.42 1.42L12 10.42l-4.29 4.29a1 1 0 1 1-1.42-1.42l5-5c.19-.19.45-.29.71-.29z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
     </div>
 
 
 
-<div class="flex items-center justify-center mt-32 relative">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-7xl mx-auto">
-        <!-- Lokma Kartı -->
-        <div class="relative group cursor-pointer w-full" onclick="toggleInfo('info1')">
-            <img src="img/lokma.jpg" class="w-full h-80 object-cover rounded-xl shadow-lg transition duration-300 group-hover:opacity-70" alt="Lokma">
-            <!-- Mobilde her zaman görünen, masaüstünde hover ile gelen yazı + ikon -->
-            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold md:opacity-0 md:group-hover:opacity-100 transition duration-300 rounded-xl">
-                <span class="mb-2">Menüyü görmek için tıkla</span>
-                <i class="bi bi-hand-index-thumb text-3xl"></i>
-            </div>
-        </div>
-        
-        <!-- Şamişi Kartı -->
-        <div class="relative group cursor-pointer w-full" onclick="toggleInfo('info2')">
-            <img src="img/şamişi.jpg" class="w-full h-80 object-cover rounded-xl shadow-lg transition duration-300 group-hover:opacity-70" alt="Şamişi">
-            <!-- Mobilde her zaman görünen, masaüstünde hover ile gelen yazı + ikon -->
-            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-lg font-semibold md:opacity-0 md:group-hover:opacity-100 transition duration-300 rounded-xl">
-                <span class="mb-2">Menüyü görmek için tıkla</span>
-                <i class="bi bi-hand-index-thumb text-3xl"></i>
-            </div>
-        </div>
-    </div>
-</div>
 
-    
-    
-    
     <!-- Açılan Menü -->
-    <div id="info1" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] bg-white shadow-xl rounded-xl p-6 hidden z-50">
+    <div id="info1"
+        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] bg-white shadow-xl rounded-xl p-6 hidden z-50">
         <button onclick="closeInfo()" class="absolute top-2 right-4 text-2xl">✖</button>
         <div class="space-y-4">
             <h3 class="text-xl font-bold text-center">Lokma Çeşitleri</h3>
             <div class="flex items-center border-b pb-3">
                 <div class="w-1/2">
+                    <h3 class="text-md font-bold">Lokma Küçük Boy</h3>
+                    <p class="text-sm">500 Gram</p>
+                    <p class="text-md font-semibold">200 TL</p>
+                </div>
+            </div>
+            <div class="flex items-center border-b pb-3">
+                <div class="w-1/2">
+                    <h3 class="text-md font-bold">Lokma Orta Boy</h3>
+                    <p class="text-sm">750 Gram</p>
+                    <p class="text-md font-semibold">300 TL</p>
+                </div>
+            </div>
+            <div class="flex items-center border-b pb-3">
+                <div class="w-1/2">
                     <h3 class="text-md font-bold">Lokma Büyük Boy</h3>
-                    <p class="text-sm">Şerbetli ve çıtır</p>
-                    <p class="text-md font-semibold">50 TL</p>
-                </div>
-                <div class="w-1/2 flex justify-center">
-                    <img src="https://img.icons8.com/ios/50/000000/doughnut.png" class="w-16 h-16">
-                </div>
-            </div>
-            <div class="flex items-center border-b pb-3">
-                <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Orta Boy</h3>
-                    <p class="text-sm">Bol çikolata soslu</p>
-                    <p class="text-md font-semibold">60 TL</p>
-                </div>
-                <div class="w-1/2 flex justify-center">
-                    <img src="https://img.icons8.com/ios/50/000000/doughnut.png" class="w-16 h-16">
-                </div>
-            </div>
-            <div class="flex items-center border-b pb-3">
-                <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Orta Boy</h3>
-                    <p class="text-sm">Bol çikolata soslu</p>
-                    <p class="text-md font-semibold">60 TL</p>
-                </div>
-                <div class="w-1/2 flex justify-center">
-
-                    <img src="https://img.icons8.com/ios/50/000000/chocolate-bar.png" class="w-16 h-16">
+                    <p class="text-sm">1 Kg</p>
+                    <p class="text-md font-semibold">350 TL</p>
                 </div>
             </div>
         </div>
     </div>
-    
-    <div id="info2" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] bg-white shadow-xl rounded-xl p-6 hidden z-50">
+
+    <div id="info2"
+        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] bg-white shadow-xl rounded-xl p-6 hidden z-50">
         <button onclick="closeInfo()" class="absolute top-2 right-4 text-2xl">✖</button>
         <div class="space-y-4">
             <h3 class="text-xl font-bold text-center">Şamişi Çeşitleri</h3>
             <div class="flex items-center border-b pb-3">
                 <div class="w-1/2">
-                    <h3 class="text-md font-bold">Şamişi Peynirli</h3>
-                    <p class="text-sm">Bol peynir dolgulu</p>
-                    <p class="text-md font-semibold">55 TL</p>
-                </div>
-                <div class="w-1/2 flex justify-center">
-                    <img src="https://img.icons8.com/ios/50/000000/doughnut.png" class="w-16 h-16">
+                    <h3 class="text-md font-bold">Şamişi Küçük Boy</h3>
+                    <p class="text-sm">5 Adet</p>
+                    <p class="text-md font-semibold">200 TL</p>
                 </div>
             </div>
             <div class="flex items-center border-b pb-3">
                 <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Orta Boy</h3>
-                    <p class="text-sm">Bol çikolata soslu</p>
-                    <p class="text-md font-semibold">60 TL</p>
-                </div>
-                <div class="w-1/2 flex justify-center">
-                    <img src="https://img.icons8.com/ios/50/000000/doughnut.png" class="w-16 h-16">
+                    <h3 class="text-md font-bold">Lokma Küçük Boy</h3>
+                    <p class="text-sm">7 Adet</p>
+                    <p class="text-md font-semibold">300 TL</p>
                 </div>
             </div>
             <div class="flex items-center border-b pb-3">
                 <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Orta Boy</h3>
-                    <p class="text-sm">Bol çikolata soslu</p>
-                    <p class="text-md font-semibold">60 TL</p>
-                </div>
-                <div class="w-1/2 flex justify-center">
-                    <img src="https://img.icons8.com/ios/50/000000/cheese.png" class="w-16 h-16">
+                    <h3 class="text-md font-bold">Lokma Küçük Boy</h3>
+                    <p class="text-sm">10 Adet</p>
+                    <p class="text-md font-semibold">350 TL</p>
                 </div>
             </div>
         </div>
     </div>
-    
+
     <!-- Hakkımızda Bölümü -->
-   <section id="hakkimizda" 
-    class="w-full min-h-[130vh] bg-cover bg-center flex flex-col justify-center items-center 
-           "
-        style="background-image: url('https://source.unsplash.com/1920x1080/?lokma,dessert');">
+    <section id="hakkimizda" class="w-full min-h-[130vh] bg-cover bg-center flex flex-col justify-center items-center">
         <div class="bg-white bg-opacity-90 p-12 rounded-2xl shadow-xl max-w-6xl text-center space-y-10">
             <h2 class="text-5xl font-extrabold text-yellow-600 mb-4">Hakkımızda</h2>
             <p class="text-lg leading-relaxed text-gray-700">Lokma ve şamişi tatlılarının en taze ve en lezzetli haliyle
@@ -346,63 +278,81 @@
                         lokmada mutluluğu hissedin. Sıcak sıcak servis edilen lokmamız, tatlı krizlerine anında çözüm
                         sunar.</p>
                 </div>
-                <div class="flex justify-center">
-                    <img src="img/l.jpg" alt="Lokma Tatlısı" class="rounded-xl shadow-lg w-60">
-                </div>
-                <div class="flex justify-center">
-                    <img src="img/l.jpg" alt="Şamişi Tatlısı" class="rounded-xl shadow-lg w-60">
-                </div>
+
                 <div>
                     <h3 class="text-2xl font-semibold mb-2 text-yellow-500">Şamişi Tatlısı</h3>
                     <p class="text-gray-700">Kıbrıs’a özgü geleneksel bir lezzet olan şamişi, irmikten hazırlanan iç
                         dolgusu ve kızartıldıktan sonra üzerine serpilen pudra şekeriyle öne çıkar. Hafif çıtır dış
                         yüzeyi ve yumuşak iç dokusuyla her lokmada damaklarda unutulmaz bir tat bırakır.</p>
                 </div>
+
+                <div class="flex justify-center">
+                    <img src="img/hakkımızdalokma.webp" alt="Lokma Tatlısı" class="rounded-xl shadow-lg w-60 h-40">
+                </div>
+                <div class="flex justify-center">
+                    <img src="img/samisi.jpg" alt="Şamişi Tatlısı" class="rounded-xl shadow-lg w-60 h-40">
+                </div>
             </div>
-            <blockquote class="italic text-xl text-gray-600 border-l-4 border-yellow-500 pl-4">“Her tatlı bir tebessüm,
-                her lokma bir anı demektir.”</blockquote>
+            <blockquote class="italic text-xl text-gray-600 border-l-4 border-yellow-500 pl-4">İzmirlinin Yeri
+            </blockquote>
         </div>
     </section>
 
 
-
-
-    <!-- Fotoğraf Galerisi -->
-    <section id="gallery" class="pt-24 pb-16 bg-cover bg-center min-h-screen"
-        style="background-image: url('https://source.unsplash.com/1920x1080/?dessert,background');">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-4xl font-extrabold text-yellow-600 mb-8">Izgara (Grid) Galeri</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <img src="img/l.jpg" class="rounded-xl shadow-lg">
-                <img src="img/l.jpg" class="rounded-xl shadow-lg">
-                <img src="img/l.jpg" class="rounded-xl shadow-lg">
-            
-            </div>
+    <div id="contact-page"
+        class="text-white flex flex-col items-center justify-center mt-12 bg-cover bg-center min-h-[85vh] bg-no-repeat bg-white bg-opacity-90 w-full max-w-6xl mx-auto rounded-2xl shadow-xl ">
+        <div class="text-center w-full max-w-4xl transition-opacity duration-300">
+            <header class="text-5xl font-bold mb-10 text-yellow-600 mt-8">İletişim</header>
+            <main class="space-y-6">
+                <p class="text-lg flex items-center justify-center space-x-2">
+                    <span><img src="img/telephone.png" alt="1" class="w-8 h-8"></span>
+                    <span class="text-yellow-500">+90 123 456 7890</span>
+                </p>
+                <p class="text-lg flex items-center justify-center space-x-2">
+                    <span><img src="img/konum.png" alt="1" class="w-10 h-10"></span>
+                    <span class="text-yellow-500">Gümüş Sk 1, Lefkoşa 99010, KKTC</span>
+                </p>
+                <div class="w-full h-[500px] rounded-lg overflow-hidden">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3260.148178406861!2d33.348194376352794!3d35.20277785610745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14de172afd68b53f%3A0xc0d68ecce556a30c!2sDEVPA%20Supermarket!5e0!3m2!1str!2s!4v1740649029256!5m2!1str!2s"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <a href="https://www.google.com/maps/search/?api=1&query=35.20277785610745,33.348194376352794"
+                        target="_blank"
+                        class="block w-full text-center text-xl bg-gray-700 p-4 rounded-b-lg hover:bg-gray-600">📍
+                        Google Maps'te Aç</a>
+                </div>
+            </main>
         </div>
-    </section>
- 
+    </div>
+
+
     <!-- Footer -->
-    <footer id="contact" class="bg-ten-rengi text-black py-8 mt-16">
+    <footer class="bg-ten-rengi text-black py-8 mt-16">
         <div class="container mx-auto flex flex-col md:flex-row justify-between text-center md:text-left    ">
 
             <!-- İletişim -->
             <div class="space-y-2 mb-4 md:mb-0 text-white">
                 <h3 class="font-bold text-lg ">İletişim</h3>
-                <a href="https://instagram.com" class="hover:text-gray-600 text-white md:items-center flex justify-center"   class="md:items-center md:flex md:justify-center" style="fill:#FFFFFF;"></a>
+                <a href="https://instagram.com"
+                    class="hover:text-gray-600 text-white md:items-center flex justify-center"
+                    class="md:items-center md:flex md:justify-center" style="fill:#FFFFFF;"></a>
                 <div class="flex justify-center md:justify-start">
                     <a href="https://instagram.com" class="hover:text-gray-600">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0,0,256,256"
                             style="fill:#FFFFFF;">
                             <g transform="scale(5.12,5.12)">
-                                <path d="M16,3c-7.16752,0 -13,5.83248 -13,13v18c0,7.16752 5.83248,13 13,13h18c7.16752,0 13,-5.83248 13,-13v-18c0,-7.16752 -5.83248,-13 -13,-13zM16,5h18c6.08648,0 11,4.91352 11,11v18c0,6.08648 -4.91352,11 -11,11h-18c-6.08648,0 -11,-4.91352 -11,-11v-18c0,-6.08648 4.91352,-11 11,-11zM37,11c-1.10457,0 -2,0.89543 -2,2c0,1.10457 0.89543,2 2,2c1.10457,0 2,-0.89543 2,-2c0,-1.10457 -0.89543,-2 -2,-2zM25,14c-6.06329,0 -11,4.93671 -11,11c0,6.06329 4.93671,11 11,11c6.06329,0 11,-4.93671 11,-11c0,-6.06329 -4.93671,-11 -11,-11zM25,16c4.98241,0 9,4.01759 9,9c0,4.98241 -4.01759,9 -9,9c-4.98241,0 -9,-4.01759 -9,-9c0,-4.98241 4.01759,-9 9,-9z"></path>
+                                <path
+                                    d="M16,3c-7.16752,0 -13,5.83248 -13,13v18c0,7.16752 5.83248,13 13,13h18c7.16752,0 13,-5.83248 13,-13v-18c0,-7.16752 -5.83248,-13 -13,-13zM16,5h18c6.08648,0 11,4.91352 11,11v18c0,6.08648 -4.91352,11 -11,11h-18c-6.08648,0 -11,-4.91352 -11,-11v-18c0,-6.08648 4.91352,-11 11,-11zM37,11c-1.10457,0 -2,0.89543 -2,2c0,1.10457 0.89543,2 2,2c1.10457,0 2,-0.89543 2,-2c0,-1.10457 -0.89543,-2 -2,-2zM25,14c-6.06329,0 -11,4.93671 -11,11c0,6.06329 4.93671,11 11,11c6.06329,0 11,-4.93671 11,-11c0,-6.06329 -4.93671,-11 -11,-11zM25,16c4.98241,0 9,4.01759 9,9c0,4.98241 -4.01759,9 -9,9c-4.98241,0 -9,-4.01759 -9,-9c0,-4.98241 4.01759,-9 9,-9z">
+                                </path>
                             </g>
                         </svg>
                     </a>
                 </div>
-                
+
                 </a>
                 <p>Telefon: +90 123 456 789</p>
-                <p>Adres: Örnek Mahallesi, No:12, İstanbul</p>
+                <p>Adres: Gümüş Sk 1, Lefkoşa 99010, KKTC</p>
             </div>
 
             <!-- Sayfalar -->
@@ -410,18 +360,17 @@
                 <h3 class="font-bold text-lg text-white">Sayfalar</h3>
                 <div class="flex flex-col space-y-1">
                     <a href="#hakkimizda" class="text-white whitespace-nowrap">Hakkımızda</a>
-                    <a href="#festival" class="text-white whitespace-nowrap">Festival Etkinlikleri</a>
-                    <a href="#gallery" class="text-white whitespace-nowrap">Fotoğraf Galerisi</a>
                     <a href="#products" class="text-white whitespace-nowrap">Ürünlerimiz</a>
-                    <a href="#contact" class="text-white whitespace-nowrap">İletişim</a>
+                    <a href="#contact-page" class="text-white whitespace-nowrap">İletişim</a>
                 </div>
             </div>
 
             <!-- Çalışma Saatleri -->
             <div class="space-y-2 text-white">
                 <h3 class="font-bold text-lg">Çalışma Saatleri</h3>
-                <p>Pazartesi - Cumartesi: 09:00 - 21:00</p>
-                <p>Pazar: 10:00 - 18:00</p>
+                <p>Pazartesi - Cuma: 10:00 - 19:00</p>
+                <p>Cumartesi: 12:00 - 19:00</p>
+                <p>Pazar: 12:00 - 19:00</p>
             </div>
         </div>
     </footer>
@@ -530,40 +479,72 @@
 
 
 
-<script>
-    function toggleInfo(id) {
-        document.getElementById("info1").classList.add("hidden");
-        document.getElementById("info2").classList.add("hidden");
-    
-        let infoBox = document.getElementById(id);
-        if (infoBox.classList.contains("hidden")) {
-            infoBox.classList.remove("hidden");
-        } else {
-            infoBox.classList.add("hidden");
+    <script>
+        function toggleInfo(id) {
+            document.getElementById("info1").classList.add("hidden");
+            document.getElementById("info2").classList.add("hidden");
+
+            let infoBox = document.getElementById(id);
+            if (infoBox.classList.contains("hidden")) {
+                infoBox.classList.remove("hidden");
+            } else {
+                infoBox.classList.add("hidden");
+            }
         }
-    }
-    
-    function closeInfo() {
-        document.getElementById("info1").classList.add("hidden");
-        document.getElementById("info2").classList.add("hidden");
-    }
-    
-    // Dışarıya tıklayınca menüyü kapatma
-    document.addEventListener("click", function(event) {
-        let info1 = document.getElementById("info1");
-        let info2 = document.getElementById("info2");
-        
-        if (!info1.contains(event.target) && !info2.contains(event.target) && !event.target.closest(".group")) {
+
+        function closeInfo() {
+            document.getElementById("info1").classList.add("hidden");
+            document.getElementById("info2").classList.add("hidden");
+        }
+
+        // Dışarıya tıklayınca menüyü kapatma
+        document.addEventListener("click", function (event) {
+            let info1 = document.getElementById("info1");
+            let info2 = document.getElementById("info2");
+
+            if (!info1.contains(event.target) && !info2.contains(event.target) && !event.target.closest(".group")) {
+                closeInfo();
+            }
+        });
+
+        // Sayfa aşağı kaydırılınca menüyü kapatma
+        window.addEventListener("scroll", function () {
             closeInfo();
-        }
-    });
-    
-    // Sayfa aşağı kaydırılınca menüyü kapatma
-    window.addEventListener("scroll", function() {
-        closeInfo();
-    });
+        });
     </script>
-    
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.getElementById("menu-toggle");
+            const menuClose = document.getElementById("menu-close");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const menuOverlay = document.getElementById("menu-overlay");
+
+            // Menü Açma
+            menuToggle.addEventListener("click", function () {
+                mobileMenu.classList.remove("hidden");
+                menuOverlay.classList.remove("hidden");
+            });
+
+            // Menü Kapatma
+            menuClose.addEventListener("click", function () {
+                mobileMenu.classList.add("hidden");
+                menuOverlay.classList.add("hidden");
+            });
+
+            // Overlay'e tıklayınca menüyü kapat
+            menuOverlay.addEventListener("click", function () {
+                mobileMenu.classList.add("hidden");
+                menuOverlay.classList.add("hidden");
+            });
+        });
+
+    </script>
+
+
+
+
 
 </body>
 
