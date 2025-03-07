@@ -132,34 +132,35 @@
 
 
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu"
-        class="fixed top-40 left-1/2 transform -translate-x-1/2 bg-ten-rengi bg-opacity-95 hidden flex flex-col items-center z-50 py-10 px-12 w-4/5 max-w-lg h-[45vh] rounded-2xl shadow-2xl transition-all duration-300">
-        <button id="menu-close" class="absolute top-4 right-6 text-3xl text-white">
-            &times;
-        </button>
+<!-- Siyah Overlay (Arka Plan) -->
+<div id="menu-overlay" class="fixed top-0 left-0 w-full h-full bg-black opacity-70 hidden z-40"></div>
 
-        <nav class="flex flex-col space-y-6 text-xl font-bold text-black w-full items-center mt-10">
-            <a href="#hakkimizda" class="hover:text-gray-600 whitespace-nowrap text-white">Hakkımızda</a>
-            <a href="#products" class="hover:text-gray-600 whitespace-nowrap text-white">Ürünlerimiz</a>
-            <a href="#contact-page" class="hover:text-gray-600 whitespace-nowrap text-white">İletişim</a>
-        </nav>
+<!-- Hamburger Menü -->
+<div id="mobile-menu" class="fixed top-40 left-1/2 transform -translate-x-1/2 bg-ten-rengi bg-opacity-95 hidden flex flex-col items-center z-50 py-10 px-12 w-4/5 max-w-lg h-[45vh] rounded-2xl shadow-2xl transition-all duration-300">
+    <button id="menu-close" class="absolute top-4 right-6 text-3xl text-white">
+        &times;
+    </button>
 
-        <!-- Sosyal Medya Başlık ve İkon -->
-        <div class="flex flex-col items-center mt-14">
-            <p class="text-white text-lg font-semibold mb-2">Sosyal Medya</p>
-            <a href="https://instagram.com" class="hover:text-gray-600">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0,0,256,256"
-                    style="fill:#FFFFFF;">
-                    <g transform="scale(5.12,5.12)">
-                        <path
-                            d="M16,3c-7.16752,0 -13,5.83248 -13,13v18c0,7.16752 5.83248,13 13,13h18c7.16752,0 13,-5.83248 13,-13v-18c0,-7.16752 -5.83248,-13 -13,-13zM16,5h18c6.08648,0 11,4.91352 11,11v18c0,6.08648 -4.91352,11 -11,11h-18c-6.08648,0 -11,-4.91352 -11,-11v-18c0,-6.08648 4.91352,-11 11,-11zM37,11c-1.10457,0 -2,0.89543 -2,2c0,1.10457 0.89543,2 2,2c1.10457,0 2,-0.89543 2,-2c0,-1.10457 -0.89543,-2 -2,-2zM25,14c-6.06329,0 -11,4.93671 -11,11c0,6.06329 4.93671,11 11,11c6.06329,0 11,-4.93671 11,-11c0,-6.06329 -4.93671,-11 -11,-11zM25,16c4.98241,0 9,4.01759 9,9c0,4.98241 -4.01759,9 -9,9c-4.98241,0 -9,-4.01759 -9,-9c0,-4.98241 4.01759,-9 9,-9z">
-                        </path>
-                    </g>
-                </svg>
-            </a>
-        </div>
+    <nav class="flex flex-col space-y-6 text-xl font-bold text-white w-full items-center mt-10">
+        <a href="#hakkimizda" class="hover:text-gray-600">Hakkımızda</a>
+        <a href="#products" class="hover:text-gray-600 ">Ürünlerimiz</a>
+        <a href="#contact-page" class="hover:text-gray-600">İletişim</a>
+    </nav>
+
+    <div class="flex flex-col items-center mt-14">
+        <p class="text-white text-lg font-semibold mb-2">Sosyal Medya</p>
+        <a href="https://www.instagram.com/izmirlinin_yerii/" class="hover:text-gray-600 text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0,0,256,256"
+                 style="fill:#ffffff;">
+                <g transform="scale(5.12,5.12)">
+                    <path d="M16,3c-7.16752,0 -13,5.83248 -13,13v18c0,7.16752 5.83248,13 13,13h18c7.16752,0 13,-5.83248 13,-13v-18c0,-7.16752 -5.83248,-13 -13,-13zM16,5h18c6.08648,0 11,4.91352 11,11v18c0,6.08648 -4.91352,11 -11,11h-18c-6.08648,0 -11,-4.91352 -11,-11v-18c0,-6.08648 4.91352,-11 11,-11zM37,11c-1.10457,0 -2,0.89543 -2,2c0,1.10457 0.89543,2 2,2c1.10457,0 2,-0.89543 2,-2c0,-1.10457 -0.89543,-2 -2,-2zM25,14c-6.06329,0 -11,4.93671 -11,11c0,6.06329 4.93671,11 11,11c6.06329,0 11,-4.93671 11,-11c0,-6.06329 -4.93671,-11 -11,-11zM25,16c4.98241,0 9,4.01759 9,9c0,4.98241 -4.01759,9 -9,9c-4.98241,0 -9,-4.01759 -9,-9c0,-4.98241 4.01759,-9 9,-9z"></path>
+                </g>
+            </svg>
+        </a>
     </div>
+</div>
+
+
 
     <div id="products" class="flex flex-col items-center justify-center mt-32 relative">
         <!-- Başlık -->
@@ -168,7 +169,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-7xl mx-auto">
             <!-- Lokma Kartı -->
             <div class="relative group cursor-pointer w-full" onclick="toggleInfo('info1')">
-                <img src="img//444.webp"
+                <img src="img/arkalokma2.jpg"
                     class="w-full h-80 object-cover rounded-xl shadow-lg transition duration-300 group-hover:opacity-70"
                     alt="Lokma">
                 <!-- Mobilde her zaman görünen, masaüstünde hover ile gelen yazı + ikon -->
@@ -184,7 +185,7 @@
 
             <!-- Şamişi Kartı -->
             <div class="relative group cursor-pointer w-full" onclick="toggleInfo('info2')">
-                <img src="img/samisi.jpg"
+                <img src="img/arkasamisi3.jpg"
                     class="w-full h-80 object-cover rounded-xl shadow-lg transition duration-300 group-hover:opacity-70"
                     alt="Şamişi">
                 <!-- Mobilde her zaman görünen, masaüstünde hover ile gelen yazı + ikon -->
@@ -203,64 +204,79 @@
 
 
 
-    <!-- Açılan Menü -->
-    <div id="info1"
-        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] bg-white shadow-xl rounded-xl p-6 hidden z-50">
-        <button onclick="closeInfo()" class="absolute top-2 right-4 text-2xl">✖</button>
-        <div class="space-y-4">
-            <h3 class="text-xl font-bold text-center">Lokma Çeşitleri</h3>
-            <div class="flex items-center border-b pb-3">
-                <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Küçük Boy</h3>
-                    <p class="text-sm">500 Gram</p>
-                    <p class="text-md font-semibold">200 TL</p>
-                </div>
+<!-- Açılan Menü -->
+<div id="info1"
+    class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] bg-white shadow-xl rounded-xl p-6 hidden z-50">
+    <button class="absolute top-2 right-4 text-2xl">✖</button>
+    <div class="space-y-4">
+        <h3 class="text-xl font-bold text-center">Lokma Çeşitleri</h3>
+        
+        <div class="flex flex-row-reverse items-center border-b pb-3">
+            <img src="img/kücüklokma2.jpg" alt="Lokma Küçük Boy" class="w-1/3 h-auto rounded-md ml-4">
+            <div class="w-2/3">
+                <h3 class="text-md font-bold">Lokma Küçük Boy</h3>
+                <p class="text-sm">500 Gram</p>
+                <p class="text-md font-semibold">250 TL</p>
             </div>
-            <div class="flex items-center border-b pb-3">
-                <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Orta Boy</h3>
-                    <p class="text-sm">750 Gram</p>
-                    <p class="text-md font-semibold">300 TL</p>
-                </div>
+        </div>
+        
+        <div class="flex flex-row-reverse items-center border-b pb-3">
+            <img src="img/ortaboylokma2.jpg" alt="Lokma Orta Boy" class="w-1/3 h-auto rounded-md ml-4">
+            <div class="w-2/3">
+                <h3 class="text-md font-bold">Lokma Orta Boy</h3>
+                <p class="text-sm">750 Gram</p>
+                <p class="text-md font-semibold">350 TL</p>
             </div>
-            <div class="flex items-center border-b pb-3">
-                <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Büyük Boy</h3>
-                    <p class="text-sm">1 Kg</p>
-                    <p class="text-md font-semibold">350 TL</p>
-                </div>
+        </div>
+        
+        <div class="flex flex-row-reverse items-center border-b pb-3">
+            <img src="img/büyükboylokma1.jpg" alt="Lokma Büyük Boy" class="w-1/3 h-auto rounded-md ml-4">
+            <div class="w-2/3">
+                <h3 class="text-md font-bold">Lokma Büyük Boy</h3>
+                <p class="text-sm">1 Kg</p>
+                <p class="text-md font-semibold">400 TL</p>
             </div>
         </div>
     </div>
+</div>
 
-    <div id="info2"
-        class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] bg-white shadow-xl rounded-xl p-6 hidden z-50">
-        <button onclick="closeInfo()" class="absolute top-2 right-4 text-2xl">✖</button>
-        <div class="space-y-4">
-            <h3 class="text-xl font-bold text-center">Şamişi Çeşitleri</h3>
-            <div class="flex items-center border-b pb-3">
-                <div class="w-1/2">
-                    <h3 class="text-md font-bold">Şamişi Küçük Boy</h3>
-                    <p class="text-sm">5 Adet</p>
-                    <p class="text-md font-semibold">200 TL</p>
-                </div>
+<div id="info2"
+    class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full md:w-[500px] bg-white shadow-xl rounded-xl p-6 hidden z-50">
+    <button class="absolute top-2 right-4 text-2xl">✖</button>
+    <div class="space-y-4">
+        <h3 class="text-xl font-bold text-center">Şamişi Çeşitleri</h3>
+        
+        <div class="flex flex-row-reverse items-center border-b pb-3">
+            <img src="img/kücüksamisi2.jpg" alt="Şamişi Küçük Boy" class="w-1/3 h-auto rounded-md ml-4">
+            <div class="w-2/3">
+                <h3 class="text-md font-bold">Şamişi Küçük Boy</h3>
+                <p class="text-sm">5 Adet</p>
+                <p class="text-md font-semibold">250 TL</p>
             </div>
-            <div class="flex items-center border-b pb-3">
-                <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Küçük Boy</h3>
-                    <p class="text-sm">7 Adet</p>
-                    <p class="text-md font-semibold">300 TL</p>
-                </div>
+        </div>
+        
+        <div class="flex flex-row-reverse items-center border-b pb-3">
+            <img src="img/ortaboysamisi3.jpg" alt="Şamişi Orta Boy" class="w-1/3 h-auto rounded-md ml-4">
+            <div class="w-2/3">
+                <h3 class="text-md font-bold">Şamişi Orta Boy</h3>
+                <p class="text-sm">7 Adet</p>
+                <p class="text-md font-semibold">350 TL</p>
             </div>
-            <div class="flex items-center border-b pb-3">
-                <div class="w-1/2">
-                    <h3 class="text-md font-bold">Lokma Küçük Boy</h3>
-                    <p class="text-sm">10 Adet</p>
-                    <p class="text-md font-semibold">350 TL</p>
-                </div>
+        </div>
+        
+        <div class="flex flex-row-reverse items-center border-b pb-3">
+            <img src="img/büyükboysamisi1.jpeg" alt="Şamişi Büyük Boy" class="w-1/3 h-auto rounded-md ml-4">
+            <div class="w-2/3">
+                <h3 class="text-md font-bold">Şamişi Büyük Boy</h3>
+                <p class="text-sm">10 Adet</p>
+                <p class="text-md font-semibold">500 TL</p>
             </div>
         </div>
     </div>
+</div>
+
+
+
 
     <!-- Hakkımızda Bölümü -->
     <section id="hakkimizda" class="w-full min-h-[130vh] bg-cover bg-center flex flex-col justify-center items-center">
@@ -287,10 +303,10 @@
                 </div>
 
                 <div class="flex justify-center">
-                    <img src="img/hakkımızdalokma.webp" alt="Lokma Tatlısı" class="rounded-xl shadow-lg w-60 h-40">
+                    <img src="img/arkalokma.jpg" alt="Lokma Tatlısı" class="rounded-xl shadow-lg w-80 h-90">
                 </div>
                 <div class="flex justify-center">
-                    <img src="img/samisi.jpg" alt="Şamişi Tatlısı" class="rounded-xl shadow-lg w-60 h-40">
+                    <img src="img/arkasamisi2.jpg" alt="Şamişi Tatlısı" class="rounded-xl shadow-lg w-80 h-90">
                 </div>
             </div>
             <blockquote class="italic text-xl text-gray-600 border-l-4 border-yellow-500 pl-4">İzmirlinin Yeri
@@ -306,11 +322,11 @@
             <main class="space-y-6">
                 <p class="text-lg flex items-center justify-center space-x-2">
                     <span><img src="img/telephone.png" alt="1" class="w-8 h-8"></span>
-                    <span class="text-yellow-500">+90 123 456 7890</span>
+                    <p class="text-yellow-500 text-xl">+90 123 456 7890</p>
                 </p>
                 <p class="text-lg flex items-center justify-center space-x-2">
                     <span><img src="img/konum.png" alt="1" class="w-10 h-10"></span>
-                    <span class="text-yellow-500">Gümüş Sk 1, Lefkoşa 99010, KKTC</span>
+                    <span class="text-yellow-500 text-xl">Gümüş Sk 1, Lefkoşa 99010, KKTC</span>
                 </p>
                 <div class="w-full h-[500px] rounded-lg overflow-hidden">
                     <iframe
@@ -334,11 +350,8 @@
             <!-- İletişim -->
             <div class="space-y-2 mb-4 md:mb-0 text-white">
                 <h3 class="font-bold text-lg ">İletişim</h3>
-                <a href="https://instagram.com"
-                    class="hover:text-gray-600 text-white md:items-center flex justify-center"
-                    class="md:items-center md:flex md:justify-center" style="fill:#FFFFFF;"></a>
                 <div class="flex justify-center md:justify-start">
-                    <a href="https://instagram.com" class="hover:text-gray-600">
+                    <a href="https://www.instagram.com/izmirlinin_yerii/?igsh=OGI3MTVzYnFyMWln&utm_source=qr#" class="hover:text-gray-600" target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0,0,256,256"
                             style="fill:#FFFFFF;">
                             <g transform="scale(5.12,5.12)">
@@ -507,40 +520,49 @@
             }
         });
 
-        // Sayfa aşağı kaydırılınca menüyü kapatma
-        window.addEventListener("scroll", function () {
-            closeInfo();
+           // Çarpı butonlarına tıklanınca ilgili kutuyu kapatmak için işlev
+    document.querySelectorAll('button.text-2xl').forEach(button => {
+        button.addEventListener('click', (event) => {
+            // Butona tıklanan kutuyu bul
+            const modal = event.target.closest('.fixed');
+            modal.classList.add('hidden');
         });
+    });
     </script>
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const menuToggle = document.getElementById("menu-toggle");
-            const menuClose = document.getElementById("menu-close");
-            const mobileMenu = document.getElementById("mobile-menu");
-            const menuOverlay = document.getElementById("menu-overlay");
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menu-toggle");  // Menü açma butonu
+    const menuClose = document.getElementById("menu-close");  // Menü kapama butonu
+    const mobileMenu = document.getElementById("mobile-menu");  // Mobil menü
+    const menuOverlay = document.getElementById("menu-overlay");  // Siyah overlay (arka plan)
 
-            // Menü Açma
-            menuToggle.addEventListener("click", function () {
-                mobileMenu.classList.remove("hidden");
-                menuOverlay.classList.remove("hidden");
-            });
+    // Menü Açma
+    menuToggle.addEventListener("click", function () {
+        mobileMenu.classList.remove("hidden");  // Menü açılır
+        menuOverlay.classList.remove("hidden");  // Siyah overlay açılır
+    });
 
-            // Menü Kapatma
-            menuClose.addEventListener("click", function () {
-                mobileMenu.classList.add("hidden");
-                menuOverlay.classList.add("hidden");
-            });
+    // Menü Kapatma
+    menuClose.addEventListener("click", function () {
+        mobileMenu.classList.add("hidden");  // Menü kapanır
+        menuOverlay.classList.add("hidden");  // Siyah overlay kapanır
+    });
 
-            // Overlay'e tıklayınca menüyü kapat
-            menuOverlay.addEventListener("click", function () {
-                mobileMenu.classList.add("hidden");
-                menuOverlay.classList.add("hidden");
-            });
+
+    // Menüdeki bağlantılara tıklama (Menüyü kapat ve sayfaya git)
+    const menuLinks = document.querySelectorAll("#mobile-menu nav a");
+    menuLinks.forEach(function(link) {
+        link.addEventListener("click", function() {
+            mobileMenu.classList.add("hidden");  // Menü kapanır
+            menuOverlay.classList.add("hidden");  // Siyah overlay kapanır
         });
+    });
+});
 
-    </script>
+
+ </script>
 
 
 
